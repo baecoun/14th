@@ -1,0 +1,363 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #071a3d, #173d78, #8db8e8);
+    color: white;
+    font-family: "Georgia", serif;
+    overflow-x: hidden;
+}
+
+
+/* Floating flowers and bees */
+
+.floating-elements span {
+    position: fixed;
+    font-size: 30px;
+    animation: floatAround 12s infinite linear;
+    opacity: 0.8;
+    z-index: 0;
+}
+
+
+.floating-elements span:nth-child(1) {
+    left: 10%;
+    animation-duration: 14s;
+}
+
+.floating-elements span:nth-child(2) {
+    left: 30%;
+    animation-duration: 10s;
+}
+
+.floating-elements span:nth-child(3) {
+    left: 55%;
+    animation-duration: 16s;
+}
+
+.floating-elements span:nth-child(4) {
+    left: 75%;
+    animation-duration: 13s;
+}
+
+.floating-elements span:nth-child(5) {
+    left: 90%;
+    animation-duration: 11s;
+}
+
+
+@keyframes floatAround {
+
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(-120vh) rotate(360deg);
+    }
+
+}
+
+
+
+/* Opening */
+
+.opening {
+
+    height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+.opening h1 {
+
+    margin-top: 40px;
+
+    font-size: 35px;
+
+}
+
+
+.opening p {
+
+    font-size: 18px;
+
+}
+
+
+
+/* Envelope */
+
+.envelope {
+
+    width: 230px;
+
+    height: 150px;
+
+    background: #e8f3ff;
+
+    position: relative;
+
+    cursor: pointer;
+
+    border-radius: 12px;
+
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+
+    animation: hover 3s infinite;
+
+}
+
+
+.flap {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 0;
+
+    height: 0;
+
+    border-left: 115px solid transparent;
+
+    border-right: 115px solid transparent;
+
+    border-top: 75px solid #b7d6ff;
+
+}
+
+
+.heart {
+
+    position: absolute;
+
+    width: 100%;
+
+    text-align: center;
+
+    top: 55px;
+
+    font-size: 55px;
+
+}
+
+
+
+@keyframes hover {
+
+    50% {
+
+        transform: translateY(-15px);
+
+    }
+
+}
+
+
+
+/* Letter */
+
+.letter-section {
+
+    display: none;
+
+    padding: 50px 20px;
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+
+.paper {
+
+    max-width: 750px;
+
+    margin: auto;
+
+    background: #fffdf8;
+
+    color: #333;
+
+    padding: 45px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+
+    line-height: 1.9;
+
+    animation: appear 1.5s;
+
+}
+
+
+.paper h2 {
+
+    color: #214f91;
+
+    text-align: center;
+
+}
+
+
+
+@keyframes appear {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(40px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+
+
+/* Memories */
+
+.memories,
+.timer,
+.ending {
+
+    text-align: center;
+
+    padding: 70px 20px;
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+
+.gallery {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 25px;
+
+    flex-wrap: wrap;
+
+}
+
+
+
+.gallery img {
+
+    width: 250px;
+
+    height: 250px;
+
+    object-fit: cover;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+
+    transition: 0.4s;
+
+}
+
+
+.gallery img:hover {
+
+    transform: scale(1.05) rotate(2deg);
+
+}
+
+
+
+/* Timer */
+
+
+#count {
+
+    font-size: 25px;
+
+    margin-top: 20px;
+
+}
+
+
+
+/* Ending */
+
+
+.ending {
+
+    min-height: 50vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+}
+
+
+.ending h1 {
+
+    font-size: 45px;
+
+}
+
+
+
+@media(max-width:600px){
+
+    .paper {
+
+        padding: 25px;
+
+    }
+
+
+    .opening h1 {
+
+        font-size: 28px;
+
+    }
+
+
+    .gallery img {
+
+        width: 90%;
+
+    }
+
+}
