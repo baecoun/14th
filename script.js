@@ -1,77 +1,64 @@
 function openLetter() {
-
     const opening = document.getElementById("opening");
     const letter = document.getElementById("letterSection");
     const music = document.getElementById("music");
 
-
+    // Open envelope
     opening.style.display = "none";
 
+    // Show letter section
     letter.style.display = "block";
 
+    // Play music
+    if (music) {
+        music.play().catch(() => {
+            console.log("Music waiting for user interaction.");
+        });
+    }
 
-    // play music kapag binuksan ang letter
-    music.volume = 0.5;
-
-    music.play().catch(() => {
-        console.log("Music needs user interaction.");
+    // Scroll to letter
+    letter.scrollIntoView({
+        behavior: "smooth"
     });
-
 }
 
 
+// Relationship timeline
+const startDate = new Date("2025-05-14T00:00:00");
 
-/*
- Relationship timer
- Start date:
- May 14, 2025
-*/
-
-
-const startDate = new Date("May 14, 2025 00:00:00");
-
-
-function updateTimer() {
-
+function updateCounter() {
     const now = new Date();
 
+    let months = (now.getFullYear() - startDate.getFullYear()) * 12;
+    months += now.getMonth() - startDate.getMonth();
 
-    let difference = now - startDate;
+    let days = now.getDate() - startDate.getDate();
 
+    if (days < 0) {
+        months--;
 
-    const seconds = Math.floor(difference / 1000);
+        const previousMonth = new Date(
+            now.getFullYear(),
+            now.getMonth(),
+            0
+        );
 
-    const minutes = Math.floor(seconds / 60);
+        days += previousMonth.getDate();
+    }
 
-    const hours = Math.floor(minutes / 60);
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
 
-    const days = Math.floor(hours / 24);
+    const counter = document.getElementById("count");
 
-
-
-    const months = Math.floor(days / 30);
-
-    const remainingDays = days % 30;
-
-    const remainingHours = hours % 24;
-
-    const remainingMinutes = minutes % 60;
-
-    const remainingSeconds = seconds % 60;
-
-
-
-    document.getElementById("count").innerHTML =
-    `${months} months, ${remainingDays} days,
-    ${remainingHours} hours,
-    ${remainingMinutes} minutes,
-    ${remainingSeconds} seconds
-    together 💙`;
-
+    if (counter) {
+        counter.innerHTML =
+            `${months} months, ${days} days<br>
+            ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+    }
 }
 
 
-
-updateTimer();
-
-setInterval(updateTimer, 1000);
+setInterval(updateCounter, 1000);
+updateCounter();
